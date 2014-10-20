@@ -39,11 +39,33 @@ namespace WebServiceMSN
                     cliente.Correo = dr.GetString("correo");
                     cliente.Telefono = dr.GetString("telefono");                    
                     clientes.Add(cliente);
-                }
+                }//while
                 
-            }
+            }//using
             
             return clientes;
-        }
-    }
-}
+        }//ObtenerClientes
+
+        [WebMethod]
+        public Boolean EsCliente(string contrasena, string correo)
+        {
+            Boolean retVal = false;
+            using (MySqlConnection con = new MySqlConnection(ConfigurationManager.ConnectionStrings["MSN"].ConnectionString))
+            {
+                MySqlCommand cmd = con.CreateCommand();
+                cmd.CommandText = "SELECT * FROM msn.cliente WHERE correo=\""+correo+"\" AND contrasena=\""+contrasena+"\";";
+                cmd.Connection = con;
+                con.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    retVal = true;
+                }//if
+
+            }//using    
+            return retVal;
+        }//esCliente
+
+
+    }//class
+}//namespace
