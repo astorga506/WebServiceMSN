@@ -39,7 +39,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MySql.Data, Version=6.9.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -58,10 +57,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClienteMSN.asmx" />
     <Content Include="MSN.asmx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteMSN.asmx.cs">
+      <DependentUpon>ClienteMSN.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MSN.asmx.cs">
       <DependentUpon>MSN.asmx</DependentUpon>
       <SubType>Component</SubType>

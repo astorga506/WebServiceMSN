@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibreriaMSN.Dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,18 +13,27 @@ namespace Dominio
         private String nombreCliente;
         private String telefono;
         private String correo;
+        private Carrito carrito;
+
+	public Carrito Carrito
+	{
+		get { return carrito;}
+		set { carrito = value;}
+	}
+	
 
         public Cliente()
         {
-
+            carrito = new Carrito();
         }
 
-        public Cliente(int idCliente, String nombreCliente, String telefono, String correo)
+        public Cliente(int idCliente, String nombreCliente, String telefono, String correo, Carrito carrito)
         {
             this.idCliente = idCliente;
             this.nombreCliente = nombreCliente;
             this.telefono = telefono;
             this.correo = correo;
+            this.carrito = carrito;
         }
 
         public String Correo
